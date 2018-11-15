@@ -8,24 +8,11 @@ interface UserListPageProperties {
     userStore?: UserStore
 }
 
-
 @inject('userStore')
 @observer
 export default class UserList extends React.Component<UserListPageProperties> {
-    onDeleteItem(item: User): void {
-        // @ts-ignore
-        this.props.userStore.deleteNote(item);
-    }
-
     getUser(index: number): User
     {
-        console.log('In method');
-        console.log(this.props.userStore);
-        if(this.props.userStore !== undefined)
-        {
-            console.log('defined store');
-            console.log(this.props.userStore.getNote(1));
-        }
         // @ts-ignore
         return this.props.userStore.getNote(index);
     }

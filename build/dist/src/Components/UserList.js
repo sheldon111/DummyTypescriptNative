@@ -7,17 +7,7 @@ var UserList = /** @class */ (function (_super) {
     function UserList() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    UserList.prototype.onDeleteItem = function (item) {
-        // @ts-ignore
-        this.props.userStore.deleteNote(item);
-    };
     UserList.prototype.getUser = function (index) {
-        console.log('In method');
-        console.log(this.props.userStore);
-        if (this.props.userStore !== undefined) {
-            console.log('defined store');
-            console.log(this.props.userStore.getNote(1));
-        }
         // @ts-ignore
         return this.props.userStore.getNote(index);
     };

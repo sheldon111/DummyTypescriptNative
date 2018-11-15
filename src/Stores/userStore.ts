@@ -32,7 +32,6 @@ class UserStore {
     }
 
     @action getNote(userId: number): User {
-        console.log('in store get method');
         const idx = this.users.findIndex((n) => n.userId === userId);
 
         if (idx < 0) {

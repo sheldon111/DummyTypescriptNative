@@ -31,7 +31,6 @@ var UserStore = /** @class */ (function () {
         }
     };
     UserStore.prototype.getNote = function (userId) {
-        console.log('in store get method');
         var idx = this.users.findIndex(function (n) { return n.userId === userId; });
         if (idx < 0) {
             throw new Error("Note " + userId + " not found");
