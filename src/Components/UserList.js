@@ -10,7 +10,7 @@ import { inject, observer } from 'mobx-react/native';
 let UserList = class UserList extends React.Component {
     onDeleteItem(item) {
         // @ts-ignore
-        this.props.userStore.deleteNote(item);
+        this.props.userStore.deleteUser(item);
     }
     render() {
         return (<View style={styles.container}>

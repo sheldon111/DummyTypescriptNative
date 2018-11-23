@@ -658,6 +658,20 @@
   resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
   integrity sha512-KEIlhXnIutzKwRbQkGWb/I4HFqBuUykAdHgDED6xqwXJfONCjF5VoE0cXEiurh3XauygxzeDzgtXUqvLkxFzzA==
 
+"@types/expo@^30.0.0":
+  version "30.0.0"
+  resolved "https://registry.yarnpkg.com/@types/expo/-/expo-30.0.0.tgz#fb19a1148b8d3136bf31cdc2ea09baa81b282a36"
+  integrity sha512-LFpFv/vVB8e2rO9yxC3MVMXZfzCe7hK6TV6xsneUbtG+lduGAaqNeT1w8paiPuK5jTp5Xe+ZnAC/TSFi5h+12Q==
+  dependencies:
+    "@types/fbemitter" "*"
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/fbemitter@*":
+  version "2.0.32"
+  resolved "https://registry.yarnpkg.com/@types/fbemitter/-/fbemitter-2.0.32.tgz#8ed204da0f54e9c8eaec31b1eec91e25132d082c"
+  integrity sha1-jtIE2g9U6cjq7DGx7skeJRMtCCw=
+
 "@types/glob@*":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.1.tgz#aa59a1c6e3fbc421e07ccd31a944c30eba521575"
@@ -686,6 +700,14 @@
   version "15.5.6"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.6.tgz#9c03d3fed70a8d517c191b7734da2879b50ca26c"
   integrity sha512-ZBFR7TROLVzCkswA3Fmqq+IIJt62/T7aY/Dmz+QkU7CaW2QFqAitCE8Ups7IzmGhcN1YWMBT4Qcoc07jU9hOJQ==
+
+"@types/react-native@*":
+  version "0.57.9"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.57.9.tgz#1b404fe864689819cbb67c4cb0c0613ef1f14b47"
+  integrity sha512-UMbo+qonyuP/+IrgsBftp90CQY0WFoQFXQ6c73aoXdZSoXbWWplVm8QqB3CU6XcN9iSV/1vE9OOofz9r7ATt/w==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/react" "*"
 
 "@types/react-native@^0.55.14":
   version "0.55.28"
@@ -5541,7 +5563,7 @@ mkdirp@*, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mobx-react@latest:
+mobx-react@5.3.6:
   version "5.3.6"
   resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-5.3.6.tgz#0bead0173aed7d12ace4981b53c28db4d61de9ef"
   integrity sha512-u0ehjkyMllnt+SQ/G5BACxwi4VkJOqDVauA7cL8UvDi4oLO1ID9Z5c/nudTdIAmtsDDhJSxW85mrgsA2Iv/56Q==
@@ -5549,7 +5571,7 @@ mobx-react@latest:
     hoist-non-react-statics "^3.0.0"
     react-lifecycles-compat "^3.0.2"
 
-mobx@latest:
+mobx@5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.6.0.tgz#e381c357e0ed7685a99a896455ecc66ff5ab84ee"
   integrity sha512-xrA0tBnSMANXCDjS2W/6YTasesA8mkg9o+v/Bw/OcbXaRVE6/soVwDMWIh7A6TwMDY4tYQprQJZ5WQN1TRSb3A==

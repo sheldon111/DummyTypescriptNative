@@ -12,7 +12,7 @@ var UserStore = /** @class */ (function () {
     function UserStore() {
         this.users = DEFAULT_USER;
     }
-    UserStore.prototype.saveNote = function (user) {
+    UserStore.prototype.saveUser = function (user) {
         var idx = this.users.findIndex(function (n) { return user.userId === n.userId; });
         if (idx < 0) {
             this.users.push(user);
@@ -21,7 +21,7 @@ var UserStore = /** @class */ (function () {
             this.users[idx] = user;
         }
     };
-    UserStore.prototype.deleteNote = function (user) {
+    UserStore.prototype.deleteUser = function (user) {
         var idx = this.users.findIndex(function (n) { return n.userId === user.userId; });
         if (idx < 0) {
             throw new Error("Note " + user.userId + " not found");
@@ -30,7 +30,7 @@ var UserStore = /** @class */ (function () {
             this.users.splice(idx, 1);
         }
     };
-    UserStore.prototype.getNote = function (userId) {
+    UserStore.prototype.getUser = function (userId) {
         var idx = this.users.findIndex(function (n) { return n.userId === userId; });
         if (idx < 0) {
             throw new Error("Note " + userId + " not found");
@@ -40,9 +40,7 @@ var UserStore = /** @class */ (function () {
         }
     };
     Object.defineProperty(UserStore.prototype, "Users", {
-        get: function () {
-            return this.users;
-        },
+        get: function () { return this.users; },
         enumerable: true,
         configurable: true
     });
@@ -51,13 +49,13 @@ var UserStore = /** @class */ (function () {
     ], UserStore.prototype, "users", void 0);
     tslib_1.__decorate([
         action
-    ], UserStore.prototype, "saveNote", null);
+    ], UserStore.prototype, "saveUser", null);
     tslib_1.__decorate([
         action
-    ], UserStore.prototype, "deleteNote", null);
+    ], UserStore.prototype, "deleteUser", null);
     tslib_1.__decorate([
         action
-    ], UserStore.prototype, "getNote", null);
+    ], UserStore.prototype, "getUser", null);
     tslib_1.__decorate([
         computed
     ], UserStore.prototype, "Users", null);

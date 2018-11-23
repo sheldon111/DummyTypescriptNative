@@ -3,13 +3,14 @@ import {StyleSheet} from 'react-native';
 import UserList from "./src/Components/UserList";
 import { Provider } from 'mobx-react/native'
 import userStore from "./src/Stores/userStore";
+import locationStore from "./src/Stores/LocationStore";
+import userSettings from "./src/Models/UserSettings";
 
 export default class App extends React.Component<undefined, undefined> {
 
   render() {
     return (
-
-        <Provider userStore={userStore}>
+        <Provider userStore={userStore} locationStore={locationStore} userSettings={userSettings}>
             <UserList />
         </Provider>
     );

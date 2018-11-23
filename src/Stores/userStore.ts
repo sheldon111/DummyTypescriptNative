@@ -13,38 +13,48 @@ const DEFAULT_USER = [
 class UserStore {
     @observable users: User[] = DEFAULT_USER;
 
-    @action public saveNote(user: User) {
+    @action public saveUser(user: User)
+    {
         const idx = this.users.findIndex((n) => user.userId === n.userId);
-        if (idx < 0) {
+
+        if (idx < 0)
+        {
             this.users.push(user);
-        } else {
+        }
+        else
+        {
             this.users[idx] = user;
         }
     }
 
-    @action deleteNote(user: User) {
+    @action deleteUser(user: User)
+    {
         const idx = this.users.findIndex((n) => n.userId === user.userId);
-        if (idx < 0) {
+        if (idx < 0)
+        {
             throw new Error(`Note ${user.userId} not found`);
-        } else {
+        }
+        else
+        {
             this.users.splice(idx, 1);
         }
     }
 
-    @action getNote(userId: number): User {
+    @action getUser(userId: number): User
+    {
         const idx = this.users.findIndex((n) => n.userId === userId);
 
-        if (idx < 0) {
+        if (idx < 0)
+        {
             throw new Error(`Note ${userId} not found`);
-        } else {
+        }
+        else
+        {
             return this.users[idx];
         }
     }
 
-    @computed get Users():User[] {
-        return this.users;
-    }
-
+    @computed get Users():User[] { return this.users; }
 }
 
 var userStore = new UserStore();
