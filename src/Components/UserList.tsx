@@ -6,65 +6,27 @@ import UserStore from '../Stores/userStore';
 import LocationStore from '../Stores/LocationStore';
 import {toJS} from "mobx";
 import locationStore from "../Stores/LocationStore";
-import UserSettings from "../Models/UserSettings";
+import UserConfigurationStore from '../Stores/UserConfigurationStore';
 
 interface UserListPageProperties {
     userStore?: UserStore
     locationStore?: LocationStore
-    userSettings?: UserSettings
+    userConfigurationStore?: UserConfigurationStore
 }
 
 @inject('userStore')
 @inject('locationStore')
-@inject('userSettings')
+@inject('userConfigurationStore')
 @observer
 export default class UserList extends React.Component<UserListPageProperties> {
     getUser(index: number): User
     {
-        // @ts-ignore
         return this.props.userStore.getUser(index);
-    }
-
-
-    async componentDidMount()
-    {
-        console.log(this.props.userSettings.applicationUrl);
-        console.log(this.props.userSettings.webSocketEndPoint);
-        console.log(this.props.userSettings.webSocketAddress);
-
     }
 
     async trackLocation()
     {
-        await this.props.locationStore.findLocation();
-
-        var location = await this.props.locationStore.locationData.pop();
-
-        console.log(location);
-        console.log(JSON.stringify(location));
-        this.props.userSettings.ws.send(JSON.stringify(location));
-    }
-
-
-    getLocation():number
-    {
-        var time = 0;
-
-        // if (this.props.locationStore.locationDataArray.length > 0)
-        // {
-        //     var trackedLocation = this.props.locationStore.locationDataArray.pop();
-        //
-        //     if(trackedLocation !== undefined)
-        //     {
-        //         console.log(trackedLocation);
-        //         console.log(trackedLocation.locationData.timestamp);
-        //         console.log(trackedLocation.locationData.coords);
-        //         time = trackedLocation.time;
-        //         console.log(time);
-        //     }
-        // }
-
-        return time;
+        await this.props.locationStore.processCurrentLocation(this.props.userConfigurationStore.ws.send);
     }
 
     render() {

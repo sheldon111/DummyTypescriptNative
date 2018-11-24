@@ -9,54 +9,19 @@ var UserList = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     UserList.prototype.getUser = function (index) {
-        // @ts-ignore
         return this.props.userStore.getUser(index);
-    };
-    UserList.prototype.componentDidMount = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
-                console.log(this.props.userSettings.applicationUrl);
-                console.log(this.props.userSettings.webSocketEndPoint);
-                console.log(this.props.userSettings.webSocketAddress);
-                return [2 /*return*/];
-            });
-        });
     };
     UserList.prototype.trackLocation = function () {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var location;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.props.locationStore.findLocation()];
+                    case 0: return [4 /*yield*/, this.props.locationStore.processCurrentLocation(this.props.userConfigurationStore.ws.send)];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.props.locationStore.locationData.pop()];
-                    case 2:
-                        location = _a.sent();
-                        console.log(location);
-                        console.log(JSON.stringify(location));
-                        this.props.userSettings.ws.send(JSON.stringify(location));
                         return [2 /*return*/];
                 }
             });
         });
-    };
-    UserList.prototype.getLocation = function () {
-        var time = 0;
-        // if (this.props.locationStore.locationDataArray.length > 0)
-        // {
-        //     var trackedLocation = this.props.locationStore.locationDataArray.pop();
-        //
-        //     if(trackedLocation !== undefined)
-        //     {
-        //         console.log(trackedLocation);
-        //         console.log(trackedLocation.locationData.timestamp);
-        //         console.log(trackedLocation.locationData.coords);
-        //         time = trackedLocation.time;
-        //         console.log(time);
-        //     }
-        // }
-        return time;
     };
     UserList.prototype.render = function () {
         var _this = this;
@@ -75,7 +40,7 @@ var UserList = /** @class */ (function (_super) {
     UserList = tslib_1.__decorate([
         inject('userStore'),
         inject('locationStore'),
-        inject('userSettings'),
+        inject('userConfigurationStore'),
         observer
     ], UserList);
     return UserList;

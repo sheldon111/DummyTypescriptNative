@@ -1,9 +1,32 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0",
+    "name": "Miscoring App",
+    "icon": "./path/totototo/your/app-icon.png",
+    "version": "1.0.0",
+    "slug": "miscoring-app",
+    "sdkVersion": "30.0.0",
+    "ios": {
+      "bundleIdentifier": "au.com.miclub.scoringapp",
+      "publishBundlePath": "ios/miscoring-app/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/miscoring-app/Supporting/shell-app-manifest.json"
+    },
+    "android": {
+      "package": "au.com.miclub.scoringapp",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+    },
     "packagerOpts": {
-      "sourceExts": ["ts", "tsx"],
+      "sourceExts": [
+        "ts",
+        "tsx"
+      ],
       "transformer": "node_modules/react-native-typescript-transformer/index.js"
-    }
+    },
+    "isDetached": true,
+    "detach": {
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.8.4-sdk30.0.0-3de13133-1adc-4ba1-8569-a84011e570b4.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.8.1-sdk30.0.0-271c32ab-0715-4dfb-8270-ecead3679bb4.tar.gz"
+    },
+    "scheme": "exp8a8b21891c5c45758d9da818df054f8e"
   }
 }

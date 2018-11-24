@@ -1,34 +1,34 @@
 import {action, computed, observable} from 'mobx';
-import {Location, Permissions} from "expo";
-import LocationData = Location.LocationData;
 import TrackedLocation from "../Models/Location";
+import {GeolocationReturnType} from "react-native";
 
 
 class LocationStore {
     @observable locationData: TrackedLocation[] = [];
 
-    @action public saveUser(location: LocationData) {
-        var locationModel = new TrackedLocation(2100000, location);
+    saveLocation(position: GeolocationReturnType)
+    {
+        this.locationData.push(new TrackedLocation(2100000, position))
+    };
 
+    processCurrentLocation(websocketSendCallBack: (message: string) => void)
+    {
+        const operations = (position: GeolocationReturnType) =>
+        {
+            let location = new TrackedLocation(2100000, position);
+            this.locationData.push(location);
+            var temp = JSON.stringify(location);
+            console.log(temp);
+            websocketSendCallBack(JSON.stringify(location));
+        };
 
-        this.locationData.push(locationModel);
+        this.findLocation(operations);
     }
 
-    @action async findLocation() {
-        async function getLocationAsync()
-        {
-            const { status } = await Permissions.askAsync(Permissions.LOCATION);
-            if (status === 'granted')
-            {
-                return Location.getCurrentPositionAsync({enableHighAccuracy: true});
-            }
-            else
-            {
-                throw new Error('Location permission not granted');
-            }
-        }
-
-        this.saveUser(await getLocationAsync());
+    @action findLocation(operation: (position: GeolocationReturnType) => void)
+    {
+        navigator.geolocation.getCurrentPosition(operation);
+        // this.getLocationAsync(operation);
     }
 
     @computed get locationDataArray(): TrackedLocation[] {

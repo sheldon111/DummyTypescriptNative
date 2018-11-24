@@ -1,13 +1,12 @@
 import {computed, observable} from "mobx";
-import {Location} from "expo";
-import LocationData = Location.LocationData;
+import {GeolocationReturnType} from "react-native";
 
 class TrackedLocation {
-    constructor(membershipId: number, locationData: LocationData) {
+    constructor(membershipId: number, position: GeolocationReturnType) {
         this.membershipId = membershipId;
-        this.recordedTime = new Date(locationData.timestamp);
-        this.latitude = locationData.coords.latitude;
-        this.longitude = locationData.coords.longitude;
+        this.recordedTime = new Date(position.timestamp);
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
     }
 
     @observable membershipId: number;
