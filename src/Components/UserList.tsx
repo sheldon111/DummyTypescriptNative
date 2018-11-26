@@ -7,11 +7,13 @@ import LocationStore from '../Stores/LocationStore';
 import {toJS} from "mobx";
 import locationStore from "../Stores/LocationStore";
 import UserConfigurationStore from '../Stores/UserConfigurationStore';
+import {NavigationScreenProp} from "react-navigation";
 
 interface UserListPageProperties {
     userStore?: UserStore
     locationStore?: LocationStore
     userConfigurationStore?: UserConfigurationStore
+    navigation: NavigationScreenProp<any, any>
 }
 
 @inject('userStore')
@@ -44,6 +46,7 @@ export default class UserList extends React.Component<UserListPageProperties> {
                     keyExtractor={(item, index) => index.toString()}
                 />
                 <Button onPress={() => this.trackLocation()} title={"click"}/>
+                <Button onPress={() => this.props.navigation.navigate('LoginScreen')} title={"Go to Login Screen"}/>
             </View>
         );
     }

@@ -35,6 +35,7 @@ var UserList = /** @class */ (function (_super) {
             return <Text>{item.coordinates}</Text>;
         }} keyExtractor={function (item, index) { return index.toString(); }}/>
                 <Button onPress={function () { return _this.trackLocation(); }} title={"click"}/>
+                <Button onPress={function () { return _this.props.navigation.navigate('LoginScreen'); }} title={"Go to Login Screen"}/>
             </View>);
     };
     UserList = tslib_1.__decorate([

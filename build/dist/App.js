@@ -22,7 +22,8 @@ var App = /** @class */ (function (_super) {
 }(React.Component));
 export default App;
 var RootStack = createStackNavigator({
-    UserList: UserList
+    UserList: UserList,
+    login: LoginScreen //login is reference, and LoginScreen is the reference to the component.
 }, {
     initialRouteName: 'UserList',
 });
