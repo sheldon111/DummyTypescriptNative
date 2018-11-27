@@ -8,6 +8,7 @@ import {toJS} from "mobx";
 import locationStore from "../Stores/LocationStore";
 import UserConfigurationStore from '../Stores/UserConfigurationStore';
 import {NavigationScreenProp} from "react-navigation";
+import userConfigurationStore from "../Stores/UserConfigurationStore";
 
 interface UserListPageProperties {
     userStore?: UserStore
@@ -28,12 +29,12 @@ export default class UserList extends React.Component<UserListPageProperties> {
 
     async trackLocation()
     {
-        await this.props.locationStore.processCurrentLocation(this.props.userConfigurationStore.ws.send);
+        await this.props.locationStore.processCurrentLocation();
     }
 
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 <FlatList
                     data={this.props.userStore.Users}
                     renderItem={({item}) => <Text>{item.fullName}</Text>}
@@ -46,27 +47,9 @@ export default class UserList extends React.Component<UserListPageProperties> {
                     keyExtractor={(item, index) => index.toString()}
                 />
                 <Button onPress={() => this.trackLocation()} title={"click"}/>
+                <Button onPress={() => userConfigurationStore.newConnection(userConfigurationStore.webSocketAddress)} title={"Create new socket connection"}/>
                 <Button onPress={() => this.props.navigation.navigate('LoginScreen')} title={"Go to Login Screen"}/>
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-});

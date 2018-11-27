@@ -20,11 +20,10 @@ export default class App extends React.Component<undefined, undefined>
   }
 }
 
-
 const RootStack: NavigationContainer = createStackNavigator(
     {
         UserList: UserList,
-        login: LoginScreen //login is reference, and LoginScreen is the reference to the component.
+        // login: LoginScreen //login is reference, and LoginScreen is the reference to the component.
     },
     {
         initialRouteName: 'UserList',

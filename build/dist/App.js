@@ -23,7 +23,6 @@ var App = /** @class */ (function (_super) {
 export default App;
 var RootStack = createStackNavigator({
     UserList: UserList,
-    login: LoginScreen //login is reference, and LoginScreen is the reference to the component.
 }, {
     initialRouteName: 'UserList',
 });

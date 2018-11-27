@@ -1,6 +1,8 @@
 import * as tslib_1 from "tslib";
 import { action, computed, observable } from 'mobx';
 import TrackedLocation from "../Models/Location";
+import Message from "../Api/message";
+import { WebSocketApi } from "../Api/WebSocketApi";
 var LocationStore = /** @class */ (function () {
     function LocationStore() {
         this.locationData = [];
@@ -9,14 +11,12 @@ var LocationStore = /** @class */ (function () {
         this.locationData.push(new TrackedLocation(2100000, position));
     };
     ;
-    LocationStore.prototype.processCurrentLocation = function (websocketSendCallBack) {
+    LocationStore.prototype.processCurrentLocation = function () {
         var _this = this;
         var operations = function (position) {
             var location = new TrackedLocation(2100000, position);
             _this.locationData.push(location);
-            var temp = JSON.stringify(location);
-            console.log(temp);
-            websocketSendCallBack(JSON.stringify(location));
+            WebSocketApi.INSTANCE.sendJSON(new Message('addLocation', location));
         };
         this.findLocation(operations);
     };
