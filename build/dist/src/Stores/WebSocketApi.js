@@ -16,8 +16,8 @@ var WebSocketApi = /** @class */ (function () {
     };
     WebSocketApi.prototype.open = function () {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var _this = this;
             var msg;
+            var _this = this;
             return tslib_1.__generator(this, function (_a) {
                 msg = {
                     type: 'authenticate',

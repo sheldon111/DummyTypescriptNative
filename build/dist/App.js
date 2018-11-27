@@ -8,6 +8,9 @@ import locationStore from "./src/Stores/LocationStore";
 import userConfigurationStore from "./src/Stores/UserConfigurationStore";
 import { createStackNavigator } from 'react-navigation';
 import { createAppContainer } from '@react-navigation/native';
+import ClubEntryScreen from "./src/Components/ClubEntryScreen";
+import colours from "./src/Assets/Constants/colours";
+import { FontAwesome } from '@expo/vector-icons';
 var App = /** @class */ (function (_super) {
     tslib_1.__extends(App, _super);
     function App() {
@@ -22,8 +25,16 @@ var App = /** @class */ (function (_super) {
 }(React.Component));
 export default App;
 var RootStack = createStackNavigator({
-    UserList: UserList,
-    login: LoginScreen //login is reference, and LoginScreen is the reference to the component.
+    UserList: {
+        screen: UserList,
+    },
+    ClubEntry: {
+        screen: ClubEntryScreen,
+        navigationOptions: {
+            headerTitle: <FontAwesome name="user" size={20} color={colours.highlight}/>,
+            headerRight: <FontAwesome name="navicon" size={24} color={colours.highlight}/>,
+        }
+    },
 }, {
     initialRouteName: 'UserList',
 });

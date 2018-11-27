@@ -46,7 +46,7 @@ export default class UserList extends React.Component<UserListPageProperties> {
                     keyExtractor={(item, index) => index.toString()}
                 />
                 <Button onPress={() => this.trackLocation()} title={"click"}/>
-                <Button onPress={() => this.props.navigation.navigate('LoginScreen')} title={"Go to Login Screen"}/>
+                <Button onPress={() => this.props.navigation.navigate('ClubEntry')} title={"Go to Login Screen"}/>
             </View>
         );
     }
