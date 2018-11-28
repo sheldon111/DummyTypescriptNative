@@ -1,20 +1,12 @@
 import * as tslib_1 from "tslib";
-import { computed, observable } from 'mobx';
-import WebSocketApi from "../Stores/WebSocketApi";
+import { computed } from 'mobx';
+import { createWebSocket } from "../Api/WebSocketApi";
 var UserConfigurationStore = /** @class */ (function () {
     function UserConfigurationStore() {
         this.applicationUrl = "127.0.0.1:8080";
         this.webSocketEndPoint = "/endpoint";
-        this.ws = new WebSocketApi(this.webSocketAddress);
+        createWebSocket(this.webSocketAddress);
     }
-    UserConfigurationStore.prototype.createConnection = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
-                this.ws.open();
-                return [2 /*return*/];
-            });
-        });
-    };
     Object.defineProperty(UserConfigurationStore.prototype, "webSocketAddress", {
         get: function () {
             return 'ws://' + this.applicationUrl + this.webSocketEndPoint;
@@ -22,12 +14,22 @@ var UserConfigurationStore = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    tslib_1.__decorate([
-        observable
-    ], UserConfigurationStore.prototype, "applicationUrl", void 0);
-    tslib_1.__decorate([
-        observable
-    ], UserConfigurationStore.prototype, "webSocketEndPoint", void 0);
+    UserConfigurationStore.prototype.newConnection = function (address) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var webs;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log(address);
+                        return [4 /*yield*/, new WebSocket(address)];
+                    case 1:
+                        webs = _a.sent();
+                        webs.send('test');
+                        return [2 /*return*/, webs];
+                }
+            });
+        });
+    };
     tslib_1.__decorate([
         computed
     ], UserConfigurationStore.prototype, "webSocketAddress", null);

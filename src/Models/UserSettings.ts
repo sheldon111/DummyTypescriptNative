@@ -1,20 +1,20 @@
 import {computed, observable} from "mobx";
-import WebSocketApi from "../Stores/WebSocketApi";
+import WebSocketApi from "../Api/WebSocketApi";
 
 class UserSettings {
     @observable applicationUrl:    string =  "127.0.0.1:8080";
     @observable webSocketEndPoint: string = "/endpoint";
-    ws: WebSocketApi;
+    // ws: WebSocketApi[];
 
     constructor() {
-        this.ws = new WebSocketApi(this.webSocketAddress);
     }
 
-    async createConnection()
+    createConnection()
     {
-        console.log('trying to open');
-        this.ws.open();
-        console.log('state: ' + (this.ws.socket.OPEN === this.ws.socket.readyState));
+        // this.ws.push(new WebSocketApi(this.webSocketAddress));
+        // console.log('trying to open');
+        // this.ws.open();
+        // console.log('state: ' + (this.ws.socket.OPEN === this.ws.socket.readyState));
     }
 
 

@@ -28,7 +28,7 @@ export default class UserList extends React.Component<UserListPageProperties> {
 
     async trackLocation()
     {
-        await this.props.locationStore.processCurrentLocation(this.props.userConfigurationStore.ws.send);
+        await this.props.locationStore.processCurrentLocation();
     }
 
     render() {

@@ -1,21 +1,16 @@
 import * as tslib_1 from "tslib";
 import { computed, observable } from "mobx";
-import WebSocketApi from "../Stores/WebSocketApi";
 var UserSettings = /** @class */ (function () {
+    // ws: WebSocketApi[];
     function UserSettings() {
         this.applicationUrl = "127.0.0.1:8080";
         this.webSocketEndPoint = "/endpoint";
-        this.ws = new WebSocketApi(this.webSocketAddress);
     }
     UserSettings.prototype.createConnection = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
-                console.log('trying to open');
-                this.ws.open();
-                console.log('state: ' + (this.ws.socket.OPEN === this.ws.socket.readyState));
-                return [2 /*return*/];
-            });
-        });
+        // this.ws.push(new WebSocketApi(this.webSocketAddress));
+        // console.log('trying to open');
+        // this.ws.open();
+        // console.log('state: ' + (this.ws.socket.OPEN === this.ws.socket.readyState));
     };
     Object.defineProperty(UserSettings.prototype, "webSocketAddress", {
         get: function () {

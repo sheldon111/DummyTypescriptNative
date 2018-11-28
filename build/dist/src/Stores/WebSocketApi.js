@@ -25,11 +25,14 @@ var WebSocketApi = /** @class */ (function () {
                 };
                 this.socket.onopen = function () {
                     // this.socket.send(JSON.stringify(msg));
-                    _this.socket.send('Hello');
+                    setInterval(function () { return _this.socket.send('Hello'); }, 1000);
                 };
                 return [2 /*return*/];
             });
         });
+    };
+    WebSocketApi.prototype.login = function () {
+        var loginPayload = { login: 'Trae', password: 'secure' };
     };
     WebSocketApi.prototype.onMessage = function () {
         this.socket.onmessage = function (message) {
