@@ -1,5 +1,7 @@
-import { StyleSheet, Platform } from 'react-native';
+import {StyleSheet, Platform, Dimensions} from 'react-native';
 import colours from "./colours";
+
+const win = Dimensions.get('window');
 
 const formats = StyleSheet.create({
     container: {
@@ -7,7 +9,7 @@ const formats = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         flexDirection: 'column',
-        backgroundColor: colours.dark,
+        backgroundColor: colours.primary,
         justifyContent: 'space-between',
         flex: 1
     },
@@ -31,15 +33,21 @@ const formats = StyleSheet.create({
         flex: 1,
 
     },
+    basicBtnContainer: {
+        width: '90%',
+        alignItems: 'center',
+        margin: 20,
+        marginTop: 0,
+        borderRadius: 5
+    },
     basicBtn: {
         backgroundColor: colours.highlight,
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: 20,
         paddingBottom: 20,
-        width: '90%',
+        width: '100%',
         borderRadius: 5,
-        margin: 20,
         flexDirection: 'row',
         alignItems: 'center'
     },
@@ -47,8 +55,23 @@ const formats = StyleSheet.create({
         color: colours.white,
         textAlign: 'right',
         fontWeight: 'bold',
-        fontSize: 20,
-        flex: 1
+        fontSize: 14,
+        flex: 10,
+    },
+    overlay: {
+        position: 'absolute',
+        flex: 1,
+        left: 0,
+        top: 0,
+        opacity: 0.6,
+        backgroundColor: colours.primary,
+        width: '100%'
+    },
+    column: {
+        flexDirection: 'column',
+    },
+    row:{
+        flexDirection: 'row'
     },
 });
 

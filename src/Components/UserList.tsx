@@ -47,6 +47,7 @@ export default class UserList extends React.Component<UserListPageProperties> {
                 />
                 <Button onPress={() => this.trackLocation()} title={"click"}/>
                 <Button onPress={() => this.props.navigation.navigate('ClubEntry')} title={"Go to Login Screen"}/>
+                <Button onPress={() => this.props.navigation.navigate('TestPage')} title={"Go to Login Screen"}/>
             </View>
         );
     }

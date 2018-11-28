@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import { FontAwesome } from '@expo/vector-icons';
 import {
-    Alert,
-    KeyboardAvoidingView, ScrollView,
+    KeyboardAvoidingView, ScrollView, StatusBar,
     StyleSheet,
     Text,
     TextInput,
@@ -13,17 +12,26 @@ import {
 import colours from "../Assets/Constants/colours";
 import formats from "../Assets/Constants/formats";
 
-export default class ClubEntryScreen extends Component{
+import {NavigationScreenProp} from "react-navigation";
+
+interface ClubEntryProperties{
+    navigation: NavigationScreenProp<any, any>
+}
+
+export default class ClubEntryScreen extends React.Component<ClubEntryProperties>{
 
 
-    onPressBtn()
+    onPressBtn(navPage: string)
     {
-        Alert.alert('this will eventually need to submit')
+        this.props.navigation.navigate(navPage)
     }
 
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={formats.container}>
+                <StatusBar
+                    barStyle="light-content"
+                />
                 <Text style={styles.welcome}>*Insert Golf Club Data*</Text>
                 <ScrollView style={styles.loginContainer} keyboardShouldPersistTaps='handled' contentContainerStyle={styles.loginContainer}>
                     <View style={formats.inputDefaultContainer}>
@@ -31,7 +39,6 @@ export default class ClubEntryScreen extends Component{
                         <TextInput
                             style={formats.inputDefault}
                             placeholder="USERNAME"
-
                             placeholderTextColor={colours.white}
                             returnKeyType={"next"}
                             autoCorrect={false}
@@ -54,9 +61,9 @@ export default class ClubEntryScreen extends Component{
                     </View>
                 </ScrollView>
                 <TouchableHighlight
-                    onPress={this.onPressBtn}
+                    onPress={() => this.onPressBtn('TestPage')}
                     underlayColor={"white"}
-                    style={{width: '100%'}}
+                    style={formats.basicBtnContainer}
                 >
                     <View style={formats.basicBtn}>
                         <FontAwesome name="lock" size={20} color="white" style={{flex:1}}/>

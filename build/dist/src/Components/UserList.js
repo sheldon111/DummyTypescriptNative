@@ -15,7 +15,7 @@ var UserList = /** @class */ (function (_super) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.props.locationStore.processCurrentLocation(this.props.userConfigurationStore.ws.send)];
+                    case 0: return [4 /*yield*/, this.props.locationStore.processCurrentLocation()];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -36,6 +36,7 @@ var UserList = /** @class */ (function (_super) {
         }} keyExtractor={function (item, index) { return index.toString(); }}/>
                 <Button onPress={function () { return _this.trackLocation(); }} title={"click"}/>
                 <Button onPress={function () { return _this.props.navigation.navigate('ClubEntry'); }} title={"Go to Login Screen"}/>
+                <Button onPress={function () { return _this.props.navigation.navigate('TestPage'); }} title={"Go to Login Screen"}/>
             </View>);
     };
     UserList = tslib_1.__decorate([

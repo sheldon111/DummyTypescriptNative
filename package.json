@@ -70,7 +70,7 @@
   },
   "rnpm": {
     "assets": [
-      "./assets/Fonts/"
+      ".src/Assets/Fonts/"
     ]
   }
 }
