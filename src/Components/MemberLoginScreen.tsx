@@ -1,8 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { FontAwesome } from '@expo/vector-icons';
 import {
-    Image,
-    KeyboardAvoidingView,StatusBar,
+    KeyboardAvoidingView, ScrollView, StatusBar,
     StyleSheet,
     Text,
     TextInput,
@@ -19,7 +18,7 @@ interface ClubEntryProperties{
     navigation: NavigationScreenProp<any, any>
 }
 
-export default class ClubEntryScreen extends React.Component<ClubEntryProperties>{
+export default class MemberLoginScreen extends React.Component<ClubEntryProperties>{
 
 
     onPressBtn(navPage: string)
@@ -33,29 +32,42 @@ export default class ClubEntryScreen extends React.Component<ClubEntryProperties
                 <StatusBar
                     barStyle="light-content"
                 />
-                <Image style={{flex: 1,height:'auto', width: '90%'}} resizeMode="contain" source={require('../Assets/Images/miscore.png')}  />
-                <View style={[styles.clubInputContainer,{flex: 1, justifyContent: 'flex-start'}]}>
+                <Text style={styles.welcome}>*Insert Golf Club Data*</Text>
+                <ScrollView style={styles.loginContainer} keyboardShouldPersistTaps='handled' contentContainerStyle={styles.loginContainer}>
                     <View style={formats.inputDefaultContainer}>
-                        <FontAwesome name="map-marker" size={20} color={colours.highlight}/>
+                        <FontAwesome name="user" size={20} color={colours.highlight}/>
                         <TextInput
                             style={formats.inputDefault}
-                            placeholder="ENTER THE NAME OF YOUR CLUB"
+                            placeholder="USERNAME"
                             placeholderTextColor={colours.white}
-                            returnKeyType={"go"}
+                            returnKeyType={"next"}
                             autoCorrect={false}
                             autoCapitalize="none"
+                            onSubmitEditing={() => {this.passwordInput.focus()}}
                             blurOnSubmit={false}
                         />
                     </View>
-                </View>
+                    <View style={formats.inputDefaultContainer}>
+                        <FontAwesome name="lock" size={20} color={colours.highlight}/>
+                        <TextInput
+                            style={formats.inputDefault}
+                            ref={(input) => {this.passwordInput = input;}}
+                            placeholder="PASSWORD"
+                            placeholderTextColor={colours.white}
+                            returnKeyType={"go"}
+                            onChangeText={(text) => this.setState({text})}
+                            secureTextEntry
+                        />
+                    </View>
+                </ScrollView>
                 <TouchableHighlight
-                    onPress={() => this.onPressBtn('MemberLogin')}
+                    onPress={() => this.onPressBtn('MainMenu')}
                     underlayColor={"white"}
                     style={formats.basicBtnContainer}
                 >
                     <View style={formats.basicBtn}>
                         <FontAwesome name="lock" size={20} color="white" style={{flex:1}}/>
-                        <Text style={formats.basicBtnText}>SUBMIT <FontAwesome name="arrow-right" size={20} color="white"/></Text>
+                        <Text style={formats.basicBtnText}>LOGIN <FontAwesome name="arrow-right" size={20} color="white"/></Text>
                     </View>
                 </TouchableHighlight>
             </KeyboardAvoidingView>
@@ -75,10 +87,10 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginBottom: 5,
     },
-    clubInputContainer: {
+    loginContainer: {
         padding: 10,
         marginBottom: 20,
-        width: '90%',
+        width: '100%',
         borderRadius: 5,
         flexDirection: 'column',
         justifyContent: 'center',

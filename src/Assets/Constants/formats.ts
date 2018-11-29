@@ -1,7 +1,5 @@
-import {StyleSheet, Platform, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
 import colours from "./colours";
-
-const win = Dimensions.get('window');
 
 const formats = StyleSheet.create({
     container: {
@@ -19,7 +17,7 @@ const formats = StyleSheet.create({
         width: '100%',
         marginBottom: 20,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     inputDefault: {
         color: colours.white,

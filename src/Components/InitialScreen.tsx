@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { FontAwesome } from '@expo/vector-icons';
 import {
     StatusBar,
@@ -9,7 +9,6 @@ import {
     Image
 } from 'react-native';
 
-
 import formats from "../Assets/Constants/formats";
 
 import {NavigationScreenProp} from "react-navigation";
@@ -19,7 +18,6 @@ interface ClubEntryProperties{
 }
 
 export default class ClubEntryScreen extends React.Component<ClubEntryProperties>{
-
 
     onPressBtn(navPage: string)
     {

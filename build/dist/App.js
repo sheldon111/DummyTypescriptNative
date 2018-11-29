@@ -4,8 +4,10 @@ import React from 'react';
 import { Provider } from 'mobx-react/native';
 import MainMenu from './src/Components/MainMenu';
 import UserList from "./src/Components/UserList";
-import ClubEntryScreen from "./src/Components/ClubEntryScreen";
+import MemberLoginScreen from "./src/Components/MemberLoginScreen";
 import InitialScreen from "./src/Components/InitialScreen";
+import HeadMenuBtn from "./src/Components/HeadMenuBtn";
+import ClubEntryScreen from "./src/Components/ClubEntryScreen";
 import userStore from "./src/Stores/userStore";
 import locationStore from "./src/Stores/LocationStore";
 import userConfigurationStore from "./src/Stores/UserConfigurationStore";
@@ -13,7 +15,6 @@ import colours from "./src/Assets/Constants/colours";
 import { FontAwesome } from '@expo/vector-icons';
 import { createStackNavigator, } from 'react-navigation';
 import { createAppContainer } from '@react-navigation/native';
-import { TouchableOpacity } from "react-native";
 var App = /** @class */ (function (_super) {
     tslib_1.__extends(App, _super);
     function App() {
@@ -27,60 +28,50 @@ var App = /** @class */ (function (_super) {
     return App;
 }(React.Component));
 export default App;
+function navOptions(icon, navigation, pageToLink, option, colour) {
+    return {
+        headerTitle: <FontAwesome name={icon} size={24} color={colours.highlight}/>,
+        headerTintColor: colours.highlight,
+        headerRight: <HeadMenuBtn pageToLink={pageToLink} option={option} navigation={navigation}/>,
+        headerStyle: { backgroundColor: colour },
+    };
+}
 var RootStack = createStackNavigator({
-    UserList: {
-        screen: UserList,
+    InitialScreen: {
+        screen: InitialScreen,
         navigationOptions: function (_a) {
             var navigation = _a.navigation;
-            return ({
-                headerTitle: <FontAwesome name="user" size={20} color={colours.highlight}/>,
-                headerRight: <TouchableOpacity style={{ paddingRight: 10 }}>
-                    <FontAwesome name="navicon" size={24} color={colours.highlight}/>
-                </TouchableOpacity>,
-                headerStyle: { backgroundColor: colours.dark },
-            });
+            return navOptions("flag", navigation, "MainMenu", "navigate", colours.dark);
         }
     },
     ClubEntry: {
         screen: ClubEntryScreen,
         navigationOptions: function (_a) {
             var navigation = _a.navigation;
-            return ({
-                headerTitle: <FontAwesome name="user" size={20} color={colours.highlight}/>,
-                headerRight: <TouchableOpacity style={{ paddingRight: 10 }} onPress={function () { return navigation.navigate('MainMenu'); }}>
-                    <FontAwesome name="navicon" size={24} color={colours.highlight}/>
-                </TouchableOpacity>,
-                headerStyle: { backgroundColor: colours.dark },
-                type: 'didBlur'
-            });
+            return navOptions("user", navigation, "MainMenu", "navigate", colours.dark);
+        }
+    },
+    UserList: {
+        screen: UserList,
+        navigationOptions: function (_a) {
+            var navigation = _a.navigation;
+            return navOptions("user", navigation, "MainMenu", "navigate", colours.dark);
+        }
+    },
+    MemberLogin: {
+        screen: MemberLoginScreen,
+        navigationOptions: function (_a) {
+            var navigation = _a.navigation;
+            return navOptions("user", navigation, "MainMenu", "navigate", colours.dark);
         }
     },
     MainMenu: {
         screen: MainMenu,
         navigationOptions: function (_a) {
             var navigation = _a.navigation;
-            return ({
-                headerTitle: <FontAwesome name="user" size={20} color={colours.highlight}/>,
-                headerRight: <TouchableOpacity style={{ paddingRight: 10 }} onPress={function () { return navigation.goBack(); }}>
-                    <FontAwesome name="navicon" size={24} color={colours.highlight}/>
-                </TouchableOpacity>,
-                headerStyle: { backgroundColor: colours.dark },
-            });
+            return navOptions("user", navigation, "", "", colours.dark);
         }
     },
-    InitialScreen: {
-        screen: InitialScreen,
-        navigationOptions: function (_a) {
-            var navigation = _a.navigation;
-            return ({
-                headerTitle: <FontAwesome name="flag" size={20} color={colours.highlight}/>,
-                headerRight: <TouchableOpacity style={{ paddingRight: 10 }} onPress={function () { return navigation.navigate('MainMenu'); }}>
-                    <FontAwesome name="navicon" size={24} color={colours.highlight}/>
-                </TouchableOpacity>,
-                headerStyle: { backgroundColor: colours.dark },
-            });
-        }
-    }
 }, {
     initialRouteName: 'InitialScreen',
 });

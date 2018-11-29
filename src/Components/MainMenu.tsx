@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { FontAwesome } from '@expo/vector-icons';
 import {
     StatusBar,
@@ -18,7 +18,6 @@ interface MenuScreenProperties{
 }
 
 export default class MenuScreen extends React.Component<MenuScreenProperties>{
-
 
     onPressBtn(navPage: string)
     {
@@ -48,13 +47,13 @@ export default class MenuScreen extends React.Component<MenuScreenProperties>{
                             </View>
                         </TouchableHighlight>
                         <TouchableHighlight
-                            onPress={() => this.onPressBtn('ClubEntry')}
+                            onPress={() => this.onPressBtn('MemberLogin')}
                             underlayColor={colours.darkUnderlay}
                             style={[styles.menuItemContainer]}
                         >
                             <View style={[styles.menuItem, formats.column]}>
                                 <FontAwesome name="map-marker" size={20} color={colours.highlight}/>
-                                <Text style={styles.menuItemText}>CLUB ENTRY</Text>
+                                <Text style={styles.menuItemText}>MEMBER LOGIN</Text>
                             </View>
                         </TouchableHighlight>
                     </View>

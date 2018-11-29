@@ -35,7 +35,7 @@ var UserList = /** @class */ (function (_super) {
             return <Text>{item.coordinates}</Text>;
         }} keyExtractor={function (item, index) { return index.toString(); }}/>
                 <Button onPress={function () { return _this.trackLocation(); }} title={"click"}/>
-                <Button onPress={function () { return _this.props.navigation.navigate('ClubEntry'); }} title={"Go to Login Screen"}/>
+                <Button onPress={function () { return _this.props.navigation.navigate('MemberLogin'); }} title={"Go to Login Screen"}/>
                 <Button onPress={function () { return _this.props.navigation.navigate('TestPage'); }} title={"Go to Login Screen"}/>
             </View>);
     };
